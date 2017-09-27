@@ -251,7 +251,7 @@ public class EnemyAI : AbstractBehaviour {
             if (direction.y >= .7f)
             {
                 //If the target is moving down.
-                if (C.transform.GetComponent<CharacterMotor>().m_Rigidbody.velocity.y < 0.2) { 
+                //if (C.transform.GetComponent<CharacterMotor>().m_Rigidbody.velocity.y < 0.2) { 
                     //Damage the enemy.
                     GetComponent<Health>().Damage(1, transform.position);
                     //Bounce the player off the enemy's head.
@@ -259,7 +259,7 @@ public class EnemyAI : AbstractBehaviour {
                     Vector3 newVelocity = m_Motor.movement.movementDirection * bounceFactor / 20;
                     newVelocity.y = bounceFactor;
                     C.transform.GetComponent<CharacterMotor>().ChangeVelocity(newVelocity);
-                }
+               // }
             }
 
         }

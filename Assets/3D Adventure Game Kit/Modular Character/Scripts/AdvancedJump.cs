@@ -7,7 +7,8 @@ using System.Collections;
 public class AdvancedJump : MultiJump {
 
     public AudioClip jumpSfx;
-
+	public float jumpVerticalRate = 1.1f;
+	public float jumpHorizontalRate = 1;
     /// <summary>
     /// This method handles the conditions on whether the jump is sucessful.
     /// </summary>
@@ -100,7 +101,8 @@ public class AdvancedJump : MultiJump {
         m_Rigidbody.velocity = Vector3.zero;
         //Calculate the jump direction using the walls angle
         Vector3 wallDir = m_Motor.collision.wallHit.normal;
-        Vector3 jumpDir = (wallDir + (transform.up / 1.2f)) * newJumpForce / 1.2f;
+        //Vector3 jumpDir = (wallDir + (transform.up / 1.2f)) * newJumpForce / 1.2f;
+		Vector3 jumpDir = (wallDir * jumpHorizontalRate + transform.up * jumpVerticalRate) * newJumpForce;
         //Apply the value to the ChangeVelocity Method.
         m_Motor.ChangeVelocity(jumpDir);
         //override the rotation with the jump direction
